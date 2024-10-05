@@ -1,0 +1,24 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/generate', methods=['POST'])
+def generate_code():
+    data = request.json
+    code = data.get('code', '')
+
+    # Here you can connect to your generative AI service
+    generated_code = f"Generated code based on: {code}"  # Placeholder for AI response
+    return jsonify({'message': generated_code})
+
+@app.route('/host', methods=['POST'])
+def host_app():
+    data = request.json
+    code = data.get('code', '')
+
+    # Here you can implement your hosting logic
+    hosting_response = f"Your app has been hosted with the following code: {code}"  # Placeholder
+    return jsonify({'message': hosting_response})
+
+if __name__ == '__main__':
+    app.run(debug=True)
