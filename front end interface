@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Code Generator</h1>
+        <textarea id="codeInput" placeholder="Write your code here..."></textarea>
+        <button id="generateCode">Generate Code</button>
+        <button id="hostApp">Host App</button>
+        <div id="response"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
