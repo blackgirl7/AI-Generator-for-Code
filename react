@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+
+const CodeGenerator = () => {
+    const [codeInput, setCodeInput] = useState('');
+    const [response, setResponse] = useState('');
+
+    const generateCode = async () => {
+        const res = await fetch('/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: codeInput }),
+        });
+        const data = await res.json();
+        setResponse(data.message);
+    };
+
+    const hostApp = async () => {
+        const res = await fetch('/host', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: codeInput }),
+        });
+        const data = await res.json();
+        setResponse(data.message);
+    };
+
+    return (
+        <div className="container">
+            <h1>AI Code Generator</h1>
+            <textarea
+                value={codeInput}
+                onChange={(e) => setCodeInput(e.target.value)}
+                placeholder="Write your code here..."
+            />
+            <button onClick={generateCode}>Generate Code</button>
+            <button onClick={hostApp}>Host App</button>
+            <div id="response">{response}</div>
+        </div>
+    );
+};
+
+export default CodeGenerator;
